@@ -35,17 +35,19 @@ While there are similar projects like GTFOBins for [Windows](https://lolbas-proj
 
 It follows a simple structure. 
 
-Configurations that have to be made on the Wazuh server are in the subfolder _server_, configurations for the agents are in the subfolder _agent_.
+Configurations that have to be made on the endpoint, i.e. agent, are in the subfolder _endpoint_.
 
 Global configuration files, e.g. ossec.conf, have the suffix _.gtfo_ to prevent accidental overwritings. These snippets have to be added to existing files.
 
-The rule files are in the subfolder _rules_ and are prefixed with a four digit number and a dash, starting with _2000-_. There must be a gap of 10, e.g. _2000-onerule.xml_, _2010-anotherrule.xml_.
+The rule files are in the subfolder _rules_ and are prefixed with a four digit number, a dash, _gtfo_ followd by a dash. Numbers start with _2000_. There must be a gap of 10. These files have to be copied to the Wazuh server and in the rules directory.
+
+*Example:* _2000-gtfo-onerule.xml_, _2010-gtfo-anotherrule.xml_.
 
 ## How to contribute?
 
 1. Clone this project
 2. Check which rules are not implemented yet in the issues tab (incomplete) or in the rules directory or contact me if unsure
 3. Check the example command string from the GTFOBins project
-4. Write the rule. Please have a look at existing rules!
+4. Write the rule. Please have a look at existing rules and mind the prefix number
 5. add - commit - pull request
 6. :)
