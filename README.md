@@ -39,7 +39,13 @@ Configurations that have to be made on the endpoint, i.e. agent, are in the subf
 
 Global configuration files, e.g. ossec.conf, have the suffix _.gtfo_ to prevent accidental overwritings. These snippets have to be added to existing files.
 
-The rule files are in the subfolder _rules_ and are prefixed with a four digit number, a dash, _gtfo_ followd by a dash. Numbers start with _2000_. There must be a gap of 10. These files have to be copied to the Wazuh server and in the rules directory.
+The rule files are in the subfolder _rules_ and are prefixed with 
+* a four digit number
+* a dash
+* _gtfo_
+* a dash.
+
+Numbers start with _2000_. There must be a gap of 10. These files have to be copied to the Wazuh server and in the rules directory.
 
 *Example:* _2000-gtfo-onerule.xml_, _2010-gtfo-anotherrule.xml_.
 
