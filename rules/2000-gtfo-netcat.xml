@@ -11,5 +11,8 @@
     <match>nc -l</match>
     <description>netcat listening for incoming connections.</description>
     <group>process_monitor,</group>
+    <mitre>
+      <id>T1133</id>
+    </mitre>
   </rule>
 </group>
