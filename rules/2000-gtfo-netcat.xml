@@ -7,7 +7,7 @@
   </rule>
 
   <rule id="110001" level="7" ignore="900">
-    <if_sid>100050</if_sid>
+    <if_sid>110000</if_sid>
     <match>nc -l</match>
     <description>netcat listening for incoming connections.</description>
     <group>process_monitor,</group>
