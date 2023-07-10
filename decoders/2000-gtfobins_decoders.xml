@@ -1,0 +1,20 @@
+<!--
+  -  GTFOBins decoders
+  -  Author Steffen Fritz
+  -  Copyright (C) 2023, Steffen Fritz.
+  -  This program is a free software; you can redistribute it and/or modify it under the terms of GPLv2.
+-->
+
+<!--
+- Will extract the output of ps aux. Tested on Linux, FreeBSD, MacOS
+-->
+
+<decoder name="gtfobins">
+	<prematch>^\w+\s+\d+\s+\d+\p\d+\s+\d+\p\d+\s+</prematch>
+</decoder>
+
+<decoder name="gtfobins-child">
+  <parent>pflog</parent>
+  <regex>^(\w+)\s+(\d+)\s+(\d+[.,]\d)+\s+(\d+[.,]\d)+\s+(\d+)\s+(\d+)\s+(\w+)\s+(\w+)[\s+]+(\w+)\s+(\d+:\d+[.,]\d+)\s+([\s\S]+)</regex>
+  <order>user,pid,cpu,mem,vsz,rss,tt,stat,started,time,command</order>
+</decoder>
