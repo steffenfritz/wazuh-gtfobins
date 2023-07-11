@@ -6,15 +6,15 @@
 -->
 
 <!--
-- Will extract the output of ps aux. Tested on Linux, FreeBSD, MacOS
+- Will extract the output of ps aux. Tested on Linux, FreeBSD and macOS.
 -->
 
 <decoder name="gtfobins">
-	<prematch>^\w+\s+\d+\s+\d+\p\d+\s+\d+\p\d+\s+</prematch>
+  <prematch>\w+\s+\d+\s+\d+\p\d+\s+\d+\p\d+\s+</prematch>
 </decoder>
 
 <decoder name="gtfobins-child">
-  <parent>pflog</parent>
-  <regex>^(\w+)\s+(\d+)\s+(\d+[.,]\d)+\s+(\d+[.,]\d)+\s+(\d+)\s+(\d+)\s+(\w+)\s+(\w+)[\s+]+(\w+)\s+(\d+:\d+[.,]\d+)\s+([\s\S]+)</regex>
-  <order>user,pid,cpu,mem,vsz,rss,tt,stat,started,time,command</order>
+  <parent>gtfobins</parent>
+  <regex>^(\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d.\d\d\d\d\d\d)\s+(\w+)\s+(\d+)\s+(\d+\p\d+)\s+(\d+\p\d+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\w+\p*)\s+(\.+)\s+(\d+:\d+\p*\d*)\s+(\.+)</regex>
+  <order>timestamp,username,pid,cpu,mem,vsz,rss,tt,stat,started,time,command</order>
 </decoder>
