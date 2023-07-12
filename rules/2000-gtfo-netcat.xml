@@ -5,7 +5,7 @@
     <group>process_monitor,</group>
   </rule>
 
-  <rule id="120001" level="7" ignore="900">
+  <rule id="120001" level="12" ignore="900">
     <if_sid>120000</if_sid>
     <match type="osregex">nc|netcat|socat -\.*l\.* \d+</match>
     <description>netcat listening for incoming connections.</description>
