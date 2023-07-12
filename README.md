@@ -31,6 +31,14 @@ This project aims to write process detection rules for [Wazuh](https://wazuh.com
 
 While there are similar projects like GTFOBins for [Windows](https://lolbas-project.github.io/) and [drivers](https://www.loldrivers.io/), wazuh-gtfobins just implements rules for Linux and Unix.
 
+## How to use GTFOBins?
+1. You need a running [Wazuh](https://wazuh.com/) instance
+2. Copy the files from the `decoder` directory into the decoder directory of your Wazuh manager, usually `/var/ossec/ruleset/decoders`
+3. Copy the files from the `rules` directory into the rules directory of your Wazuh manager, usually `/var/ossec/ruleset/rules`
+4. Add the contents of the files from the `endpoint` directory into the respective files on the endpoints. To prevent that the files are accidentally overwritten they have the suffix .gtfo.
+
+The `ps` command you add from the ossec.conf.gtfo file can also be added on the manager in a centralized agent.conf file. However, there is no copy and paste for that in this repository for now.
+
 ## How is this project structured?
 
 It follows a simple structure. 
@@ -45,14 +53,14 @@ The rule files are in the subfolder _rules_ and are prefixed with
 * _gtfo_
 * a dash.
 
-Numbers start with _2000_. There must be a gap of 10. These files have to be copied to the Wazuh server and in the rules directory.
+Numbers start with _2000_. There must be a gap of 10. These files have to be copied to the Wazuh manager and in the rules directory.
 
 *Example:* _2000-gtfo-onerule.xml_, _2010-gtfo-anotherrule.xml_.
 
 ## How to contribute?
 
 1. Clone this project
-2. Check which rules are not implemented yet in the issues tab (incomplete) or in the rules directory or contact me if unsure
+2. Check which rules are not implemented yet in the issues tab (incomplete) or in the rules directory or contact me if unsure.
 3. Check the example command string from the GTFOBins project
 4. Write the rule. Please have a look at existing rules and mind the prefix number
 5. add - commit - pull request
