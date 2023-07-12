@@ -1,6 +1,6 @@
   <localfile>
     <log_format>full_command</log_format>
-    <alias>process list</alias>
+    <alias>process list with prefixed date</alias>
     <command>ps aux | while IFS= read -r line; do printf '%s %s\n' "$(date '+%Y-%m-%d %H:%M:%S.000000')" "$line"; done</command>
     <frequency>30</frequency>
   </localfile>
