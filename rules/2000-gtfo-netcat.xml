@@ -7,8 +7,20 @@
 
   <rule id="120001" level="12" ignore="900">
     <if_sid>120000</if_sid>
-    <match type="osregex">nc|netcat|socat -\.*l\.* \d+</match>
+    <match type="osregex">nc|netcat -\.*l\.* \d+</match>
     <description>netcat listening for incoming connections.</description>
+    <group>process_monitor,</group>
+    <mitre>
+      <id>T1133</id>
+    </mitre>
+  </rule>
+</group>
+
+<!-- The -e flag has a different meaning in traditional and OpenBSD versions. --> 
+<rule id="120002" level="12" ignore="900">
+    <if_sid>120000</if_sid>
+    <match type="osregex">nc|netcat -\.*e\.* /bin/\.*</match>
+    <description>netcat possibly send back a reverse shell to a listening attacker.</description>
     <group>process_monitor,</group>
     <mitre>
       <id>T1133</id>
