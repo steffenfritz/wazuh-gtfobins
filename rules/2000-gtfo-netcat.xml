@@ -27,3 +27,15 @@
     </mitre>
   </rule>
 </group>
+
+<!-- The -e flag has a different meaning in traditional and OpenBSD versions. --> 
+<rule id="120003" level="12" ignore="900">
+    <if_sid>120000</if_sid>
+    <match type="osregex">nc|netcat \.* < \.*</match>
+    <description>netcat sent a file.</description>
+    <group>process_monitor,</group>
+    <mitre>
+      <id>T1048</id>
+    </mitre>
+  </rule>
+</group>
