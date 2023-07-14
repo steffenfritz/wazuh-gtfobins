@@ -16,7 +16,9 @@
   </rule>
 </group>
 
-<!-- The -e flag has a different meaning in traditional and OpenBSD versions. --> 
+<!-- The -e flag has a different meaning in traditional and OpenBSD versions. -->
+<!-- This rule possibly covers also https://gtfobins.github.io/gtfobins/nc/#sudo -->
+<!-- This rule possibly covers also https://gtfobins.github.io/gtfobins/nc/#limited-suid -->
 <rule id="120002" level="12" ignore="900">
     <if_sid>120000</if_sid>
     <match type="osregex">nc|netcat -\.*e\.* /bin/\.*</match>
@@ -28,11 +30,21 @@
   </rule>
 </group>
 
-<!-- The -e flag has a different meaning in traditional and OpenBSD versions. --> 
 <rule id="120003" level="12" ignore="900">
     <if_sid>120000</if_sid>
     <match type="osregex">nc|netcat \.* < \.*</match>
     <description>netcat sent a file.</description>
+    <group>process_monitor,</group>
+    <mitre>
+      <id>T1048</id>
+    </mitre>
+  </rule>
+</group>
+
+<rule id="120004" level="12" ignore="900">
+    <if_sid>120000</if_sid>
+    <match type="osregex">nc|netcat \.* > \.*</match>
+    <description>netcat recieved a file.</description>
     <group>process_monitor,</group>
     <mitre>
       <id>T1048</id>
