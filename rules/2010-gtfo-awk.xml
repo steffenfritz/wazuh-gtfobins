@@ -1,0 +1,16 @@
+<group name="gtfobins,">
+  <!-- Non-interactive reverse shell -->
+  <!-- This rule is work in progress and not verified.-->
+  <rule id="120010" level="12" ignore="900">
+    <if_sid>120000</if_sid>
+    <match type="osregex">awk \.* 'BEGIN {
+    s = "/inet/tcp/0/" \.* "/" \.*;
+    while (1) {printf "> " |& s; if ((s |& getline c) <= 0) break;
+    while (c && (c |& getline) > 0) print $0 |& s; close(c)}}'</match>
+    <description>awk created probably a reverse-shell.</description>
+    <group>process_monitor,</group>
+    <mitre>
+      <id>T1133</id>
+    </mitre>
+  </rule>
+</group>
